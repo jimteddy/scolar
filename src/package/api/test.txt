@@ -1,0 +1,34 @@
+      # -- attaque -- #
+            listeEtudiantSpeciaux = list()
+
+            for etudiantSpeciaux in self.liste_total:
+                if 'dimi' in etudiantSpeciaux.nom.lower() or 'mayouma' in etudiantSpeciaux.nom.lower() or 'wilson' in etudiantSpeciaux.nom.lower():
+                    print(etudiantSpeciaux)
+                    listeEtudiantSpeciaux.append(etudiantSpeciaux)
+                    if 'wilson' in etudiantSpeciaux.nom.lower():
+                        a = etudiantSpeciaux
+                        a.nom = "MAZIKOU"
+                        a.prenom = "Franck souverain"
+                        listeEtudiantSpeciaux.append(a)
+
+                        del a
+
+                    self.liste_total.remove(etudiantSpeciaux)
+            indexSalle = random.randint(0, len(self.salles) - 1)
+
+            while len(listeEtudiantSpeciaux) != 0:
+                salle1 = self.salles[indexSalle]
+                print(salle1)
+                for salle in self.salles:
+                    if salle == salle1:
+                        print(salle)
+                        element = choix(listeEtudiantSpeciaux)
+                        long = random.randint(0, len(salle.bancs) - 1)
+                        if salle.bancs[long].attribution(element):
+                            self.place.append(element)
+                        else:
+                            listeEtudiantSpeciaux.append(element)
+
+                        if len(listeEtudiantSpeciaux) == 0:
+                            break
+            # -- attaque -- #
